@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Browser Control MCP",
+    "version": "1.0",
+    "description": "A simple extension to control the browser given websocket messages from an MCP server",
+    "permissions": [
+        "tabs",
+        "*://*/*",
+        "history"
+    ],
+    "background": {
+      "scripts": ["dist/background.js"]
+    }
+  }
