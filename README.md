@@ -1,6 +1,6 @@
 # Browser Control MCP
 
-An MCP server paired with a browser extension that enables LLM clients, such as Claude Desktop, to control the user's local browser.
+An MCP server paired with a browser extension that enables LLM clients, such as Claude Desktop, to control the user's local browser (Firefox).
 
 ## Features
 
