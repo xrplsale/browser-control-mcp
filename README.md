@@ -15,6 +15,9 @@ The MCP server supports the following tools:
 In addition, the contents of each opened tab in the browser is available as an MCP resource, allowing the user
 to select browser tabs in the MCP client itself (e.g. Claude) and load their content into the context.
 
+<img width="741" alt="image" src="https://github.com/user-attachments/assets/5d69b113-633e-4804-b6a3-ba588ac2d9eb" />
+
+
 ## Example use-cases:
 
 - *"Close all non-work related tabs in my browser."*
