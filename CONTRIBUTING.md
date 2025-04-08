@@ -18,7 +18,7 @@ The feature will allow to {add feature info}, similar to the {add most similar o
 
 1. Add the server message interface in `server-messages.ts`, with a unique "cmd" as well as any other information that the browser would need.
 2. If the tool relies on information provided by the browser, add the extension message interface in `extension-messages.ts` including all the information that the browser will provide.
-3. Add a new method in `browser-api.ts` that sends the tool message to the extension, waits for response and then returns the info from the EphemeralMap.
+3. Add a new method in `browser-api.ts` that sends the tool message to the extension, waits for response and then returns the relevant data.
 4. Add a new `mcpServer.tool` in `server.js` that include the required parameters from the MCP client and that calls the browser API and returns the info back to the client (format should be similar to other tools).
 5. In `background.ts`, add a new function that uses the browser API to fulfill the feature, sending back the resource info to the WS server if needed, using the correlationId
 6. In `background.ts`, update `handleDecodedMessage` to support the new tool.
