@@ -12,7 +12,7 @@ import { join } from "path";
 import { readFile } from "fs/promises";
 import * as crypto from "crypto";
 
-// Support up to two initializations of the MCP server by the client
+// Support up to two initializations of the MCP server by clients
 // More initializations will result in EDADDRINUSE errors
 const WS_PORTS = [8081, 8082];
 const EXTENSION_RESPONSE_TIMEOUT_MS = 1000;
