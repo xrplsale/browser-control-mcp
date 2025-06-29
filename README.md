@@ -33,7 +33,7 @@ to select browser tabs in the MCP client itself (e.g. Claude) and load their con
 
 ## Comparison to web automation MCP servers
 
-The purpose of this MCP server is to provide AI agents with safe access to the user's **personal** browser. It does not support web pages modification or arbitrary scripting. The browser extension can also be configured to limit the actions that the MCP server can perform (in the extension's preferences page).
+The purpose of this MCP server is to provide AI agents with safe access to the user's **personal** browser. It does not support web pages modification or arbitrary scripting. The browser extension can also be configured to limit the actions that the MCP server can perform (in the extension's preferences page). By default, accessing the content of a webpage will require the user's explicit consent on the browser side, for each host.
 
 ## Installation
 
