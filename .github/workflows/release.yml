@@ -33,12 +33,10 @@ jobs:
         mv mcp-server.dxt mcp-server-${{ github.event.release.tag_name }}.dxt
     
     - name: Upload package to release
-      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./mcp-server/mcp-server-${{ github.event.release.tag_name }}.dxt
-        asset_name: mcp-server-${{ github.event.release.tag_name }}.dxt
-        asset_content_type: application/octet-stream
+      run: |
+        gh release upload ${{ github.event.release.tag_name }} \
+          ./mcp-server/mcp-server-${{ github.event.release.tag_name }}.dxt \
+          --clobber
 
