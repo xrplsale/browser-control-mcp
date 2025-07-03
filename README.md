@@ -60,9 +60,14 @@ To install the extension:
 If you prefer not to run the extension on your personal Firefox browser, an alternative is to download a separate Firefox instance (such as Firefox Developer Edition, available at https://www.mozilla.org/en-US/firefox/developer/).
 
 
-### Usage with Claude Desktop:
+### Usage with Claude Desktop
 
-After installing the extension, add the following configuration to `claude_desktop_config.json` (use the Edit Config button in Claude Desktop Developer settings):
+#### Option 1: Install with .dxt file
+Claude Desktop now supports Desktop Extension packages (.dxt).
+To install this MCP server as a Desktop Extension, download and open [mcp-server-v1.3.1d.dxt](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.3.1d/mcp-server-v1.3.1d.dxt). Make sure to enable the extension after installing it on Claude Desktop.
+
+#### Option 2: Install with MCP server configuration
+After installing the browser extension, add the following configuration to `claude_desktop_config.json` (use the Edit Config button in Claude Desktop Developer settings):
 ```
 {
     "mcpServers": {
