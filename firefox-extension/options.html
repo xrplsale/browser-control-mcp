@@ -25,8 +25,8 @@
     }
 
     h2 {
-      margin-top: 20px;
-      margin-bottom: 15px;
+      margin-top: 12px;
+      margin-bottom: 8px;
       color: #333;
       cursor: pointer;
       display: flex;
@@ -295,6 +295,38 @@
   <div class="container main-content" id="main-content">
     <h1>Browser Control MCP Options</h1>
     <p>Configure settings for the Browser Control MCP extension.</p>
+
+    <div class="section-container">
+      <h2>MCP Server Installation</h2>
+      <div class="section-content">
+        <p>To use this extension, you need to install the local MCP server. Choose one of the following options:</p>
+        
+        <div style="margin: 15px 0;">
+          <h3 style="margin: 10px 0; font-size: 16px; color: #333;">Option 1: Download DXT Package (Claude Desktop only)</h3>
+          <p>Download and open the pre-built DXT package:</p>
+          <a href="https://github.com/eyalzh/browser-control-mcp/releases/download/v1.3.1d/mcp-server-v1.3.1d.dxt" 
+             style="display: inline-block; background-color: #4285f4; color: white; padding: 8px 16px; 
+                    text-decoration: none; border-radius: 4px; margin: 5px 0; font-size: 14px;">
+            Download DXT Package
+          </a>
+        </div>
+        
+        <div style="margin: 15px 0;">
+          <h3 style="margin: 10px 0; font-size: 16px; color: #333;">Option 2: Manual MCP Installation</h3>
+          <p>Follow the detailed setup instructions in the github repository:</p>
+          <a href="https://github.com/eyalzh/browser-control-mcp?tab=readme-ov-file#installation" 
+             target="_blank" rel="noopener noreferrer"
+             style="display: inline-block; background-color: #f1f3f4; color: #333; padding: 8px 16px; 
+                    text-decoration: none; border-radius: 4px; border: 1px solid #dadce0; margin: 5px 0; font-size: 14px;">
+            View Installation Guide
+          </a>
+        </div>
+        
+        <p style="margin-top: 15px; color: #666; font-size: 14px;">
+          After installing the MCP server, you'll need to configure it with the secret key shown below.
+        </p>
+      </div>
+    </div>
 
     <div class="section-container">
       <h2>Secret Key</h2>
