@@ -9,7 +9,7 @@ The MCP server supports the following tools:
 - Get the list of opened tabs
 - Reorder opened tabs
 - Read and search the browser's history
-- Read a webpage's text content and links
+- Read a webpage's text content and links (requires user consent)
 - Find and highlight text in a browser tab
 
 In addition, the contents of each opened tab in the browser is available as an MCP resource, allowing the user
