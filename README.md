@@ -8,6 +8,7 @@ The MCP server supports the following tools:
 - Open or close tabs
 - Get the list of opened tabs
 - Reorder opened tabs
+- Create tab groups
 - Read and search the browser's history
 - Read a webpage's text content and links (requires user consent)
 - Find and highlight text in a browser tab
