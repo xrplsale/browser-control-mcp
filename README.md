@@ -96,7 +96,7 @@ Alternatively, you can use a docker-based configuration. To do so, build the mcp
 docker build -t browser-control-mcp .
 ```
 
-and use the following configuration in mcpServers:
+and use the following mcpServers configuration:
 
 ```json
 {
