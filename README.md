@@ -40,7 +40,7 @@ The purpose of this MCP server is to provide AI agents with safe access to the u
 
 This repository includes a pre-built Firefox add-on/extension as well as a pre-built Claude Desktop extension (dxt). They were created from code using `web-ext build` and `npx @anthropic-ai/dxt pack`, respectively. 
 
-Download and open [The .1.4.0.xpi file](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.4.0/d454bbac57dd4ecd9690-1.4.0.xpi). Complete the installation based on the instructions in the extension's option page, which will open automatically after installation.
+Download and open [browser-control-mcp-1.4.1.xpi](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.4.1/browser-control-mcp-1.4.1.xpi). Complete the installation based on the instructions in the extension's option page, which will open automatically after installation.
 
 The extensions' options page will include a link to the Claude Desktop DXT file. You can also download it here: [mcp-server-v1.4.0.dxt](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.4.0/mcp-server-v1.4.0.dxt). Make sure to enable the extension after installing it. This will only work with the latest versions of Claude Desktop. If you wish to install the MCP server locally, see that part below.
 
