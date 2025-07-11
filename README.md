@@ -19,6 +19,7 @@ The MCP server supports the following tools:
 - *"Close all non-work related tabs in my browser."*
 - *"Rearrange tabs in my browser in an order that makes sense."*
 - *"Close all tabs in my browser that haven't been accessed within the past 24 hours"*
+- *"Group all development related tabs in my browser into a new group called 'Development'."*
 
 ### Browser history search
 - *"Help me find an article in my browser history about the Milford track in NZ."*
