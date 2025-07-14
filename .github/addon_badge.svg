@@ -9,8 +9,8 @@
       <rect width="140" height="20" rx="3" fill="#fff"/>
     </clipPath>
     <g clip-path="url(#r)">
-      <rect width="89" height="20" fill="#ff6611"/>
-      <rect x="89" width="51" height="20" fill="#4c1"/>
+      <rect width="89" height="20" fill="#555"/>
+      <rect x="89" width="51" height="20" fill="#6a7d8a"/>
       <rect width="140" height="20" fill="url(#s)"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110">
