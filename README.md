@@ -1,5 +1,7 @@
 # Browser Control MCP
 
+[![Firefox Add-on](./.github/addon_badge.svg)](https://addons.mozilla.org/en-US/firefox/addon/browser-control-mcp/)
+
 An MCP server paired with a browser extension that enables AI agents, such as Claude Desktop, to manage the user's local browser, to interact with open tabs and to use the browser for research and information retrieval.
 
 ## Features
@@ -36,14 +38,12 @@ The purpose of this MCP server is to provide AI agents with safe access to the u
 
 ## Installation
 
-### Option 1: Install the pre-built Firefox and Claude Desktop extensions
+### Option 1: Install the Firefox and Claude Desktop extensions
 
-This repository includes a pre-built Firefox add-on/extension as well as a pre-built Claude Desktop extension (dxt). They were created from code using `web-ext build` and `npx @anthropic-ai/dxt pack`, respectively. 
+The Firefox extension / add-on is [available on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/browser-control-mcp/). You can also download and open the latest pre-built version from this Github repository: [browser-control-mcp-1.5.0.xpi](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/browser-control-1.5.0.xpi). Complete the installation based on the instructions in the "Manage extension" page, which will open automatically after installation.
 
-Download and open [browser-control-mcp-1.5.0.xpi](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/browser-control-1.5.0.xpi). Complete the installation based on the instructions in the extension's option page, which will open automatically after installation.
-
-The extensions' options page will include a link to the Claude Desktop DXT file. You can also download it here: [mcp-server-v1.5.0.dxt](
-https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/mcp-server-v1.5.0.dxt). Make sure to enable the extension after installing it. This will only work with the latest versions of Claude Desktop. If you wish to install the MCP server locally, see that part below.
+The add-on's "Manage extension" page will include a link to the Claude Desktop DXT file. You can also download it here: [mcp-server-v1.5.0.dxt](
+https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/mcp-server-v1.5.0.dxt). After downloading the file, open it or drag it into Claude Desktop's settings window. Make sure to enable the DXT extension after installing it. This will only work with the latest versions of Claude Desktop. If you wish to install the MCP server locally, see the mcp configuration below.
 
 ### Option 2: Build from code
 
