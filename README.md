@@ -42,7 +42,8 @@ This repository includes a pre-built Firefox add-on/extension as well as a pre-b
 
 Download and open [browser-control-mcp-1.4.1.xpi](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.4.1/browser-control-mcp-1.4.1.xpi). Complete the installation based on the instructions in the extension's option page, which will open automatically after installation.
 
-The extensions' options page will include a link to the Claude Desktop DXT file. You can also download it here: [mcp-server-v1.4.0.dxt](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.4.0/mcp-server-v1.4.0.dxt). Make sure to enable the extension after installing it. This will only work with the latest versions of Claude Desktop. If you wish to install the MCP server locally, see that part below.
+The extensions' options page will include a link to the Claude Desktop DXT file. You can also download it here: [mcp-server-v1.5.0.dxt](
+https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/mcp-server-v1.5.0.dxt). Make sure to enable the extension after installing it. This will only work with the latest versions of Claude Desktop. If you wish to install the MCP server locally, see that part below.
 
 ### Option 2: Build from code
 
@@ -69,7 +70,8 @@ If you prefer not to run the extension on your personal Firefox browser, an alte
 
 #### Option 1: Install with .dxt file
 Claude Desktop now supports Desktop Extension packages (.dxt).
-To install this MCP server as a Desktop Extension, download and open [mcp-server-v1.4.0.dxt](https://github.com/eyalzh/browser-control-mcp/releases/download/v1.4.0/mcp-server-v1.4.0.dxt). Make sure to enable the extension after installing it.
+To install this MCP server as a Desktop Extension, download and open [mcp-server-v1.5.0.dxt](
+https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/mcp-server-v1.5.0.dxt). Make sure to enable the extension after installing it.
 
 #### Option 2: Install with MCP server configuration
 After installing the browser extension, add the following configuration to your mcpServers configuration (e.g. `claude_desktop_config.json` for Claude Desktop):
