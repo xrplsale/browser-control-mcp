@@ -63,7 +63,7 @@ To install the extension on Firefox as a Temporary Add-on:
 4. Select the `manifest.json` file under the `firefox-extension` folder in this project
 5. The extension's preferences page will open. Copy the secret key to your clipboard. It will be used to configure the MCP server.
 
-Alternatively, to install a permanent add-on, you can install the [Browser Control MCP on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/browser-control-mcp/) and then build the MCP Server from code locally as detailed below.
+Alternatively, to install a permanent add-on, you can install the [Browser Control MCP on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/browser-control-mcp/) and then configure the MCP Server as detailed below.
 
 If you prefer not to run the extension on your personal Firefox browser, an alternative is to download a separate Firefox instance (such as Firefox Developer Edition, available at https://www.mozilla.org/en-US/firefox/developer/).
 
