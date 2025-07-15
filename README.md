@@ -63,17 +63,13 @@ To install the extension on Firefox as a Temporary Add-on:
 4. Select the `manifest.json` file under the `firefox-extension` folder in this project
 5. The extension's preferences page will open. Copy the secret key to your clipboard. It will be used to configure the MCP server.
 
+Alternatively, to install a permanent add-on, you can install the [Browser Control MCP on addons.mozilla.org](https://addons.mozilla.org/en-US/firefox/addon/browser-control-mcp/) and then build the MCP Server from code locally as detailed below.
+
 If you prefer not to run the extension on your personal Firefox browser, an alternative is to download a separate Firefox instance (such as Firefox Developer Edition, available at https://www.mozilla.org/en-US/firefox/developer/).
 
 
-### Usage with Claude Desktop
+#### MCP Server configuration
 
-#### Option 1: Install with .dxt file
-Claude Desktop now supports Desktop Extension packages (.dxt).
-To install this MCP server as a Desktop Extension, download and open [mcp-server-v1.5.0.dxt](
-https://github.com/eyalzh/browser-control-mcp/releases/download/v1.5.0/mcp-server-v1.5.0.dxt). Make sure to enable the extension after installing it.
-
-#### Option 2: Install with MCP server configuration
 After installing the browser extension, add the following configuration to your mcpServers configuration (e.g. `claude_desktop_config.json` for Claude Desktop):
 ```json
 {
@@ -84,7 +80,8 @@ After installing the browser extension, add the following configuration to your 
                 "/path/to/repo/mcp-server/dist/server.js"
             ],
             "env": {
-                "EXTENSION_SECRET": "<secret_from_extension>"
+                "EXTENSION_SECRET": "<secret_on_firefox_extension_options_page>",
+                "EXTENSION_PORT": "8089" 
             }
         }
     }
@@ -93,6 +90,10 @@ After installing the browser extension, add the following configuration to your 
 Replace `/path/to/repo` with the correct path.
 
 Set the EXTENSION_SECRET based on the value provided on the extension's preferences in the extension management page in Firefox (you can access it from `about:addons`). You can also set the EXTENSION_PORT environment variable to specify the port that the MCP server will use to communicate with the extension (default is 8089).
+
+It might take a few seconds for the MCP server to connect to the extension.
+
+##### Configure the MCP server with Docker
 
 Alternatively, you can use a docker-based configuration. To do so, build the mcp-server Docker image:
 ```
@@ -119,6 +120,4 @@ and use the following mcpServers configuration:
     }
 }
 ```
-
-Make sure to restart Claude Desktop. It might take a few seconds for the MCP server to connect to the extension.
 
