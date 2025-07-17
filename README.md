@@ -2,7 +2,7 @@
 
 [![Firefox Add-on](./.github/addon_badge.svg)](https://addons.mozilla.org/en-US/firefox/addon/browser-control-mcp/)
 
-An MCP server paired with a Firefox browser extension that provides AI assistants with safe access to tab management, browsing history, and webpage text content.
+An MCP server paired with a Firefox browser extension that provides AI assistants with access to tab management, browsing history, and webpage text content.
 
 ## Features
 
