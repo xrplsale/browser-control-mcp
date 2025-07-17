@@ -34,7 +34,16 @@ The MCP server supports the following tools:
 
 ## Comparison to web automation MCP servers
 
-The purpose of this MCP server is to provide AI agents with safe access to the user's **personal** browser. It does not support web page modification or arbitrary scripting. By default, accessing the content of a webpage will require the user's explicit consent on the browser side, for each domain. The browser extension can also be configured to restrict the actions that the MCP server can perform (on the extension's preferences page).
+The MCP server and Firefox extension combo is designed to be more secure than web automation MCP servers, enabling safer use with the user's personal browser.
+
+* It does not support web page modification, interactions, or arbitrary scripting.
+* Reading webpage content requires the user's explicit consent in the browser for each domain. This is enforced at the extension's manifest level.
+* It uses a local-only connection with a shared secret between the MCP server and extension.
+* No remote data collection or tracking.
+* It provides an extension-side audit log for tool calls and tool enable/disable configuration.
+* The extension includes no runtime third-party dependencies.
+
+**Important note**: Browser Control MCP is still experimental. Use at your own risk. You should practice caution as with any other MCP server and authorize/monitor tool calls carefully.
 
 ## Installation
 
