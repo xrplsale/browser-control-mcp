@@ -1,24 +1,35 @@
-# AI-supported contribution types
+# Contributing to Browser Control MCP
 
-## Adding a new tool
+We welcome pull requests for adding new features and tools to the extension, as well as for bug fixes.
 
-### Context
+## Development Guidelines
 
-- common/server-messages.ts
-- common/extension-messages.ts
-- mcp-server/browser-api.ts
-- server.ts
-- firefox-extension/message-handler.ts
+### Testing Requirements
+- Make sure to update the Firefox extension unit tests when making changes
+- Test the MCP server integration with Claude Desktop
+- Test the Firefox extension on Firefox Developer Edition
 
-### Prompt
+### Compatibility
+- Keep backwards and forward compatibility in mind when making changes
+- Ensure changes work across different versions of Firefox and Claude Desktop
 
-Let's add a new feature to the MCP WS server as well as support for it in the extension.
+### Security and Privacy
+Security and privacy are the core design principles of this solution. Please ensure that:
+- All browser interactions require explicit user consent
+- No sensitive data is logged or transmitted unnecessarily  
+- Extension permissions are minimal and justified
+- WebSocket communication uses proper authentication
 
-The feature will allow to {add feature info}, similar to the {add most similar other feature already in the code}.
+## Getting Started
 
-1. Add the server message interface in `server-messages.ts`, with a unique "cmd" as well as any other information that the browser would need.
-2. If the tool relies on information provided by the browser, add the extension message interface in `extension-messages.ts` including all the information that the browser will provide.
-3. Add a new method in `browser-api.ts` that sends the tool message to the extension, waits for response and then returns the relevant data.
-4. Add a new `mcpServer.tool` in `server.js` that include the required parameters from the MCP client and that calls the browser API and returns the info back to the client (format should be similar to other tools).
-5. In `message-handler.ts`, add a new function that uses the browser API to fulfill the feature, sending back the resource info to the WS server if needed, using the correlationId
-6. In `message-handler.ts`, update `handleDecodedMessage` to support the new tool.
+See the main README.md for setup instructions and the CLAUDE.md file for development commands.
+
+## Pull Request Process
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with appropriate tests
+4. Run the test suite: `cd firefox-extension && npm test`
+5. Build all projects: `npm run build`
+6. Test manually with Claude Desktop and Firefox Developer Edition
+7. Submit a pull request with a clear description of changes
