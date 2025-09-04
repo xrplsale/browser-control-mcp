@@ -287,7 +287,7 @@ async function savePorts(event: MouseEvent) {
       throw new Error("At least one port must be specified.");
     }
 
-    // Save to storage
+  // Save to storage
     await setPorts(ports);
 
     // Reload the extension:

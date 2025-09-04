@@ -1,4 +1,5 @@
 import WebSocket from "ws";
+import type { RawData } from "ws";
 import type {
   ExtensionMessage,
   BrowserTab,
@@ -10,6 +11,13 @@ import type {
 } from "@browser-control-mcp/common";
 import { isPortInUse } from "./util";
 import * as crypto from "crypto";
+
+// Minimal Node globals typing (to avoid relying on @types/node in this context)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const process: {
+  env: Record<string, string | undefined>;
+  once: (event: "SIGINT" | "SIGTERM" | "beforeExit" | "exit", cb: () => void) => void;
+};
 
 const WS_DEFAULT_PORT = 8089;
 const EXTENSION_RESPONSE_TIMEOUT_MS = 1000;
@@ -33,7 +41,7 @@ export class BrowserAPI {
   > = new Map();
 
   async init() {
-    const { secret, port } = readConfig();
+    const { secret, port, portCandidates } = readConfig();
     if (!secret) {
       throw new Error(
         "EXTENSION_SECRET env var missing. See the extension's options page."
@@ -41,10 +49,33 @@ export class BrowserAPI {
     }
     this.sharedSecret = secret;
 
-    if (await isPortInUse(port)) {
-      throw new Error(
-        `Configured port ${port} is already in use. Please configure a different port.`
-      );
+    // Determine the port to bind: try explicit port first, otherwise iterate candidates
+    let selectedPort = port;
+    if (portCandidates && portCandidates.length > 0) {
+      // If an explicit port was provided and is not part of candidates, try it first
+      const candidateList = Array.from(new Set(portCandidates));
+      const tryPorts = selectedPort && !candidateList.includes(selectedPort)
+        ? [selectedPort, ...candidateList]
+        : candidateList;
+      selectedPort = 0; // will be set when found
+      for (const p of tryPorts) {
+        // eslint-disable-next-line no-await-in-loop
+        if (!(await isPortInUse(p))) {
+          selectedPort = p;
+          break;
+        }
+      }
+      if (!selectedPort) {
+        throw new Error(
+          `All configured ports are in use (${tryPorts.join(", ")}). Please free a port or update the configuration.`
+        );
+      }
+    } else {
+      if (await isPortInUse(selectedPort)) {
+        throw new Error(
+          `Configured port ${selectedPort} is already in use. Please configure a different port.`
+        );
+      }
     }
 
     // Unless running in a container, bind to localhost only
@@ -52,16 +83,16 @@ export class BrowserAPI {
 
     this.wsServer = new WebSocket.Server({
       host,
-      port,
+      port: selectedPort,
     });
 
-    console.error(`Starting WebSocket server on ${host}:${port}`);
-    this.wsServer.on("connection", async (connection) => {
+    console.error(`Starting WebSocket server on ${host}:${selectedPort}`);
+  this.wsServer.on("connection", async (connection: WebSocket) => {
       this.ws = connection;
 
-      console.error("WebSocket connection established on port", port);
+      console.error("WebSocket connection established on port", selectedPort);
 
-      this.ws.on("message", (message) => {
+      this.ws.on("message", (message: RawData) => {
         const decoded = JSON.parse(message.toString());
         if (isErrorMessage(decoded)) {
           this.handleExtensionError(decoded);
@@ -75,9 +106,23 @@ export class BrowserAPI {
         this.handleDecodedExtensionMessage(decoded.payload);
       });
     });
-    this.wsServer.on("error", (error) => {
+    this.wsServer.on("error", (error: Error) => {
       console.error("WebSocket server error:", error);
     });
+
+    // Graceful shutdown to free the port even if the host process exits
+    const cleanup = () => {
+      try {
+        this.ws?.close();
+      } catch {}
+      try {
+        this.wsServer?.close();
+      } catch {}
+    };
+    process.once("SIGINT", cleanup);
+    process.once("SIGTERM", cleanup);
+    process.once("beforeExit", cleanup);
+    process.once("exit", cleanup);
   }
 
   close() {
@@ -243,11 +288,23 @@ export class BrowserAPI {
 }
 
 function readConfig() {
+  const candidatesRaw = process.env.EXTENSION_PORT_CANDIDATES;
+  const candidates: number[] | undefined = candidatesRaw
+    ? candidatesRaw
+        .split(/[ ,]+/)
+        .map((s: string) => parseInt(s.trim(), 10))
+        .filter((n: number) => Number.isFinite(n) && n >= 1 && n <= 65535)
+    : undefined;
   return {
     secret: process.env.EXTENSION_SECRET,
     port: process.env.EXTENSION_PORT
       ? parseInt(process.env.EXTENSION_PORT, 10)
       : WS_DEFAULT_PORT,
+    portCandidates: candidates && candidates.length > 0 ? candidates : undefined,
+  } as {
+    secret?: string;
+    port: number;
+    portCandidates?: number[];
   };
 }
 

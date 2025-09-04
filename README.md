@@ -100,6 +100,14 @@ Replace `/path/to/repo` with the correct path.
 
 Set the EXTENSION_SECRET to the value shown on the extension's preferences page in Firefox (you can access it at `about:addons`). You can also set the EXTENSION_PORT environment variable to specify the port that the MCP server will use to communicate with the extension (default is 8089).
 
+If you run into issues where a port remains in use after restarting (e.g. after a desktop app restart), you can configure fallback ports via `EXTENSION_PORT_CANDIDATES` (comma or space separated). The server will try the primary `EXTENSION_PORT` first (if provided), then iterate the candidates until it finds a free port:
+
+```
+EXTENSION_PORT=8089
+EXTENSION_PORT_CANDIDATES=8089, 8090, 8091
+```
+Make sure the same list of ports exists in the Firefox add-on options page.
+
 It might take a few seconds for the MCP server to connect to the extension.
 
 ##### Configure the MCP server with Docker

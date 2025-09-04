@@ -30,7 +30,8 @@
             ],
             "env": {
                 "EXTENSION_SECRET": "${user_config.extension_secret}",
-                "EXTENSION_PORT": "${user_config.port}"
+                "EXTENSION_PORT": "${user_config.port}",
+                "EXTENSION_PORT_CANDIDATES": "${user_config.port_candidates}"
             }
         }
     },
@@ -47,6 +48,12 @@
             "title": "Extension Port",
             "description": "The port that the MCP server will use to communicate with the Firefox extension (default is 8089)",
             "default": "8089",
+            "required": false
+        },
+        "port_candidates": {
+            "type": "string",
+            "title": "Fallback Ports (comma or space separated)",
+            "description": "Optional list of ports to try if the primary port is in use (e.g. 8089, 8090, 8091)",
             "required": false
         }
     },
